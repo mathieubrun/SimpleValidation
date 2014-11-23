@@ -7,7 +7,7 @@ namespace SimpleValidation.Tests
     [TestClass]
     public class ApiTests
     {
-        [TestMethod]
+        [Ignore]
         public void This_must_compile()
         {
             // arrange
