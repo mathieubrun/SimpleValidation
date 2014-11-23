@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".readme", ".readme", "{FEE719A3-7746-4301-9B42-43FA9FAC09BA}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{CC48F171-6A0D-4C06-87B0-95B2DF56D1E7}"
