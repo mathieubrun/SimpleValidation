@@ -9,5 +9,9 @@ namespace SimpleValidation.Tests
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
+
+        public string Email { get; set; }
+
+        public Person Parent { get; set; }
     }
 }
