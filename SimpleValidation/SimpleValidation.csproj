@@ -51,8 +51,24 @@
     <Compile Include="Builders\IValidatorBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builders\ICompositeRuleBuilder.cs" />
+    <Compile Include="Rules\Comparisons.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\ComparisonBasedRule.cs" />
+    <Compile Include="Rules\ExpressionBasedRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\MandatoryRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ValidationResult.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

@@ -58,6 +58,12 @@
     <Compile Include="ApiTests.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rules\ComparisonBasedRuleTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Rules\MandatoryRuleTests.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SimpleValidation\SimpleValidation.csproj">
