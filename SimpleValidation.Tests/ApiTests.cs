@@ -16,13 +16,13 @@ namespace SimpleValidation.Tests
             // act
             var rule = sut
                 .RuleFor(x => x.DateOfBirth)
-                    .NotEmpty()
+                    .NotNull()
                     .LessThanToday()
-                .RuleFor(x => x.FirstName)
-                    .NotEmpty()
-                    .NotWhiteSpace()
-                .RuleFor(x => x.LastName)
-                    .NotWhiteSpace();
+                .RuleFor(x => x.Parent)
+                    .NotNull()
+                .RulesFor(x => x.FirstName)
+                    .Rules(x => x.NotNull())
+                        .Then(x => x.NotWhitespace());
         }
     }
 }

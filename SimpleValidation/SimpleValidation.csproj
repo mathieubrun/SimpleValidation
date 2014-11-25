@@ -41,11 +41,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\IDateRuleBuilder.cs" />
-    <Compile Include="Builders\IValidatorBuilder.cs" />
-    <Compile Include="Builders\IStringRuleBuilder.cs" />
+    <Compile Include="Builders\IDateRules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\IDefaultRules.cs" />
+    <Compile Include="Builders\IStringRules.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\IValidatorBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Builders\IRuleBuilderBase.cs" />
+    <Compile Include="Builders\ICompositeRuleBuilder.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
