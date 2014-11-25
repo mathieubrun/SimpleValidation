@@ -1,4 +1,4 @@
-﻿namespace SimpleValidation.Rules
+﻿namespace SimpleValidation
 {
     public interface IRule
     {
