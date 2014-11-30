@@ -13,16 +13,16 @@ namespace SimpleValidation.Tests.Rules
         {
             // arrange
             var comparison = DateTime.Now;
-            var reference = new Person() { DateOfBirth = comparison };
+            var reference = new TestObject() { Date = comparison };
 
             // assert
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.LessThan, comparison.AddDays(-1)).Execute().IsSuccess);
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.LessThanOrEqual, comparison.AddDays(-1)).Execute().IsSuccess);
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.LessThanOrEqual, comparison).Execute().IsSuccess);
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.Equal, comparison).Execute().IsSuccess);
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.GreaterThanOrEqual, comparison).Execute().IsSuccess);
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.GreaterThanOrEqual, comparison.AddDays(1)).Execute().IsSuccess);
-            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.DateOfBirth, Comparisons.GreaterThan, comparison.AddDays(1)).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.LessThan, comparison.AddDays(-1)).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.LessThanOrEqual, comparison.AddDays(-1)).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.LessThanOrEqual, comparison).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.Equal, comparison).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.GreaterThanOrEqual, comparison).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.GreaterThanOrEqual, comparison.AddDays(1)).Execute().IsSuccess);
+            Assert.AreEqual(true, new ComparisonBasedRule<DateTime>(() => reference.Date, Comparisons.GreaterThan, comparison.AddDays(1)).Execute().IsSuccess);
         }
 
         [TestMethod]

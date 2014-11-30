@@ -11,8 +11,8 @@ namespace SimpleValidation.Tests.Rules
         public void Execute_must_return_failure_if_property_is_default()
         {
             // arrange
-            var obj = new Person();
-            var sut = new MandatoryRule<string>(() => obj.FirstName);
+            var obj = new TestObject();
+            var sut = new MandatoryRule<string>(() => obj.String);
 
             // act
             var result = sut.Execute();
@@ -25,8 +25,8 @@ namespace SimpleValidation.Tests.Rules
         public void Execute_must_return_success_if_property_is_not_default()
         {
             // arrange
-            var obj = new Person() { FirstName = "Test" };
-            var sut = new MandatoryRule<string>(() => obj.FirstName);
+            var obj = new TestObject() { String = "Test" };
+            var sut = new MandatoryRule<string>(() => obj.String);
 
             // act
             var result = sut.Execute();

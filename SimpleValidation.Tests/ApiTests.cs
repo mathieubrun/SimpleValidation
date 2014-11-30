@@ -11,17 +11,20 @@ namespace SimpleValidation.Tests
         public void This_must_compile()
         {
             // arrange
-            var sut = Mock.Of<IValidatorBuilder<Person>>();
+            var sut = Mock.Of<IValidatorBuilder<TestObject>>();
 
             // act
             var rule = sut
-                .RuleFor(x => x.DateOfBirth)
-                    .NotNull()
+                .RuleFor(x => x.Date)
+                    .NotDefault()
+                    .LessThanToday()
+                .RuleFor(x => x.NullDate)
+                    .NotDefault()
                     .LessThanToday()
                 .RuleFor(x => x.Parent)
-                    .NotNull()
-                .RulesFor(x => x.FirstName)
-                    .Rules(x => x.NotNull())
+                    .NotDefault()
+                .RulesFor(x => x.String)
+                    .Rules(x => x.NotDefault())
                         .Then(x => x.NotWhitespace());
         }
     }
