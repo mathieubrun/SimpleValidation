@@ -3,16 +3,16 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public class MandatoryRule<TProperty> : ExpressionBasedRule<TProperty>
+    public class MandatoryRule<TTarget, TProperty> : ExpressionBasedRule<TTarget, TProperty>
     {
-        public MandatoryRule(Expression<Func<TProperty>> getProperty)
+        public MandatoryRule(Expression<Func<TTarget, TProperty>> getProperty)
             : base(getProperty)
         {
         }
 
-        public override ValidationResult Execute()
+        public override ValidationResult Execute(TTarget target)
         {
-            var result = GetValue();
+            var result = GetValue(target);
 
             if (!object.Equals(default(TProperty), result))
             {

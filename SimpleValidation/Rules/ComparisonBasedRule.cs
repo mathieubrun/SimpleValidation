@@ -3,21 +3,21 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public class ComparisonBasedRule<TProperty> : ExpressionBasedRule<TProperty> where TProperty : IComparable
+    public class ComparisonBasedRule<TTarget, TProperty> : ExpressionBasedRule<TTarget, TProperty> where TProperty : IComparable, IComparable<TProperty>
     {
         private readonly Comparisons comparison;
         private readonly TProperty reference;
 
-        public ComparisonBasedRule(Expression<Func<TProperty>> getProperty, Comparisons comparison, TProperty reference)
+        public ComparisonBasedRule(Expression<Func<TTarget, TProperty>> getProperty, Comparisons comparison, TProperty reference)
             : base(getProperty)
         {
             this.comparison = comparison;
             this.reference = reference;
         }
 
-        public override ValidationResult Execute()
+        public override ValidationResult Execute(TTarget target)
         {
-            var result = GetValue();
+            var result = GetValue(target);
 
             if (reference == null)
             {
@@ -34,6 +34,8 @@ namespace SimpleValidation.Rules
                     return GetResult(comp == 0 || comp < 0);
                 case Comparisons.Equal:
                     return GetResult(comp == 0);
+                case Comparisons.Different:
+                    return GetResult(comp != 0);
                 case Comparisons.GreaterThanOrEqual:
                     return GetResult(comp == 0 || comp > 0);
                 case Comparisons.GreaterThan:

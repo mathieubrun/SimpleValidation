@@ -12,10 +12,10 @@ namespace SimpleValidation.Tests.Rules
         {
             // arrange
             var obj = new TestObject();
-            var sut = new MandatoryRule<string>(() => obj.String);
+            var sut = new MandatoryRule<TestObject, string>(x => x.String);
 
             // act
-            var result = sut.Execute();
+            var result = sut.Execute(obj);
 
             // assert
             Assert.AreEqual(false, result.IsSuccess);
@@ -26,10 +26,10 @@ namespace SimpleValidation.Tests.Rules
         {
             // arrange
             var obj = new TestObject() { String = "Test" };
-            var sut = new MandatoryRule<string>(() => obj.String);
+            var sut = new MandatoryRule<TestObject, string>(x => x.String);
 
             // act
-            var result = sut.Execute();
+            var result = sut.Execute(obj);
 
             // assert
             Assert.AreEqual(true, result.IsSuccess);
