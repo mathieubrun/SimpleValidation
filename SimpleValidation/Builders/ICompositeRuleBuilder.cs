@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Builders
 {
-    public interface ICompositeRuleBuilder<TTarget, TRules> : IValidatorBuilder<TTarget>
+    public interface ICompositeRuleBuilder<TTarget, TRules>
     {
         ICompositeSuccessRuleBuilder<TTarget, TRules> Rules(params Expression<Action<TRules>>[] rules);
     }
