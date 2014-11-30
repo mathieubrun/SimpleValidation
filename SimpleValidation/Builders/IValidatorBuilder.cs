@@ -6,11 +6,15 @@ namespace SimpleValidation.Builders
 {
     public interface IValidatorBuilder<TTarget>
     {
+        IDateRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, DateTime?>> propertySelector);
+
         IDateRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, DateTime>> propertySelector);
 
         IStringRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, string>> propertySelector);
 
         IDefaultRuleBuilder<TTarget> RuleFor<TProperty>(Expression<Func<TTarget, TProperty>> propertySelector);
+
+        ICompositeRuleBuilder<TTarget, IDateRules> RulesFor(Expression<Func<TTarget, DateTime?>> propertySelector);
 
         ICompositeRuleBuilder<TTarget, IDateRules> RulesFor(Expression<Func<TTarget, DateTime>> propertySelector);
 

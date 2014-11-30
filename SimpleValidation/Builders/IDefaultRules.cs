@@ -12,12 +12,12 @@ namespace SimpleValidation.Builders
     {
     }
 
-    public interface IDefaultRules : IDefaultRules<IDefaultRules>
-    {
-    }
-
     public interface IDefaultRules<TReturn>
     {
-        TReturn NotNull();
+        TReturn NotDefault();
+    }
+
+    public interface IDefaultRules : IDefaultRules<IDefaultRules>
+    {
     }
 }
