@@ -66,6 +66,9 @@
     <Compile Include="Rules\MandatoryRule.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Rules\PredictateBasedRule.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="ValidationResult.cs">
       <SubType>Code</SubType>
     </Compile>
