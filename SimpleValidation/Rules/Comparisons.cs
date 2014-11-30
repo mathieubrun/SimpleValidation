@@ -8,8 +8,10 @@ namespace SimpleValidation.Rules
         LessThan,
 
         LessThanOrEqual,
-        
+
         Equal,
+
+        Different,
         
         GreaterThanOrEqual,
         

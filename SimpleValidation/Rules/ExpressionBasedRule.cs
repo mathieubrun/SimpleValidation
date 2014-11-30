@@ -3,20 +3,20 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public abstract class ExpressionBasedRule<TProperty> : IRule
+    public abstract class ExpressionBasedRule<TTarget, TProperty> : ITargetedRule<TTarget>
     {
-        private readonly Func<TProperty> getValue;
+        private readonly Func<TTarget, TProperty> selector;
 
-        public ExpressionBasedRule(Expression<Func<TProperty>> getProperty)
+        public ExpressionBasedRule(Expression<Func<TTarget, TProperty>> propertySelector)
         {
-            this.getValue = getProperty.Compile();
+            this.selector = propertySelector.Compile();
         }
 
-        public abstract ValidationResult Execute();
+        public abstract ValidationResult Execute(TTarget target);
 
-        protected TProperty GetValue()
+        protected TProperty GetValue(TTarget target)
         {
-            return getValue();
+            return selector(target);
         }
     }
 }
