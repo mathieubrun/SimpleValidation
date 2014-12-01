@@ -17,17 +17,12 @@ namespace SimpleValidation.Rules
         {
             var result = GetValue(target);
 
-            return GetResult(predicate(result));
-        }
-
-        private ValidationResult GetResult(bool success, string message = null)
-        {
-            if (success)
+            if (predicate(result))
             {
-                return ValidationResult.Success(message);
+                return ValidationResult.Success();
             }
 
-            return ValidationResult.Failure(message);
+            return ValidationResult.Failure();
         }
     }
 }
