@@ -41,6 +41,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\DateRuleBuilder.cs" />
+    <Compile Include="Builders\DefaultRuleBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Builders\IDateRules.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -49,6 +53,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Builders\IValidatorBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\StringRuleBuilder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Builders\ValidatorBuilder.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IRule.cs">
