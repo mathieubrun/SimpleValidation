@@ -29,17 +29,17 @@ namespace SimpleValidation.Rules
             switch (comparison)
             {
                 case Comparisons.LessThan:
-                    return GetResult(comp < 0);
+                    return GetResult(comp > 0);
                 case Comparisons.LessThanOrEqual:
-                    return GetResult(comp == 0 || comp < 0);
+                    return GetResult(comp == 0 || comp > 0);
                 case Comparisons.Equal:
                     return GetResult(comp == 0);
                 case Comparisons.Different:
                     return GetResult(comp != 0);
                 case Comparisons.GreaterThanOrEqual:
-                    return GetResult(comp == 0 || comp > 0);
+                    return GetResult(comp == 0 || comp < 0);
                 case Comparisons.GreaterThan:
-                    return GetResult(comp > 0);
+                    return GetResult(comp < 0);
                 default:
                     return GetResult(false);
             }
