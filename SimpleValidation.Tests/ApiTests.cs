@@ -11,7 +11,7 @@ namespace SimpleValidation.Tests
     public class ApiTests
     {
         [TestMethod]
-        public void ValidatorBuilder()
+        public void ValidatorBuilder_api()
         {
             // arrange
             var success = new TestObject()
