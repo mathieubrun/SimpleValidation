@@ -44,5 +44,28 @@ namespace SimpleValidation.Tests
             // assert
             Assert.IsTrue(successResults.All(x => x.IsSuccess));
         }
+
+        [TestMethod]
+        public void ValidationEngine_implementation_test()
+        {
+            // arrange
+            var success = new TestObject()
+            {
+                String = "Test",
+                Date = DateTime.Now.AddDays(-1),
+                Parent = new TestObject()
+                {
+                    Date = DateTime.Now.AddDays(1)
+                }
+            };
+
+            var sut = new TestValidationEngine();
+
+            // act
+            var successResults = sut.Validate(success);
+
+            // assert
+            Assert.IsTrue(successResults.All(x => x.IsSuccess));
+        }
     }
 }
