@@ -64,6 +64,7 @@
     <Compile Include="IRule.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IValidationEngine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Builders\ICompositeRuleBuilder.cs" />
     <Compile Include="Rules\Comparisons.cs">
@@ -79,6 +80,7 @@
     <Compile Include="Rules\PredictateBasedRule.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ValidationEngineBase.cs" />
     <Compile Include="ValidationResult.cs">
       <SubType>Code</SubType>
     </Compile>
