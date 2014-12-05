@@ -26,14 +26,16 @@ namespace SimpleValidation.Builders
 
         public IStringRuleBuilder<TTarget> NotWhitespace()
         {
-            this.Add(new ComparisonBasedRule<TTarget, string>(propertySelector, Comparisons.Different, ""));
+            this.Add(new PredictateBasedRule<TTarget, string>(propertySelector, x => !string.IsNullOrWhiteSpace(x)));
 
             return this;
         }
 
         public IStringRuleBuilder<TTarget> NotEmpty()
         {
-            throw new NotImplementedException();
+            this.Add(new ComparisonBasedRule<TTarget, string>(propertySelector, Comparisons.Different, ""));
+
+            return this;
         }
 
         public IStringRuleBuilder<TTarget> NotDefault()
