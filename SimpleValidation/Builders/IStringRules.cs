@@ -8,6 +8,8 @@
 
     public interface IStringRules<TReturn> : IDefaultRules<TReturn>
     {
+        TReturn Regex(string regex);
+
         TReturn Email();
 
         TReturn NotWhitespace();

@@ -21,7 +21,19 @@ namespace SimpleValidation.Builders
 
         public IStringRuleBuilder<TTarget> Email()
         {
-            throw new NotImplementedException();
+            // from http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx/
+            return Regex(@"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+                + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$");
+        }
+
+        public IStringRuleBuilder<TTarget> Regex(string pattern)
+        {
+            var regexp = new System.Text.RegularExpressions.Regex(pattern);
+
+            this.Add(new PredictateBasedRule<TTarget, string>(propertySelector, x => regexp.IsMatch(x)));
+
+            return this;
         }
 
         public IStringRuleBuilder<TTarget> NotWhitespace()
