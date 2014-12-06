@@ -16,7 +16,7 @@ namespace SimpleValidation.Tests
             // arrange
             var success = new TestObject()
             {
-                String = "Test",
+                String = "test@example.com",
                 Date = DateTime.Now.AddDays(-1),
                 Parent = new TestObject()
                 {
@@ -30,6 +30,7 @@ namespace SimpleValidation.Tests
                 .RuleFor(x => x.String)
                     .NotDefault()
                     .NotWhitespace()
+                    .Email()
                 .RuleFor(x => x.Date)
                     .NotDefault()
                     .LessThanToday()
