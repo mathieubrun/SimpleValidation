@@ -6,7 +6,7 @@ using SimpleValidation.Rules;
 namespace SimpleValidation.Tests.Rules
 {
     [TestClass]
-    public class PredicateBasedRuleTests
+    public class PredicateRuleTests
     {
         [TestMethod]
         public void Execute_must_return_correct_ValidationResult()
@@ -16,12 +16,12 @@ namespace SimpleValidation.Tests.Rules
             var reference2 = new TestObject() { String = " " };
             var reference3 = new TestObject() { String = null };
 
-            var sut = new PredictateBasedRule<TestObject, string>(x => x.String, x => !string.IsNullOrWhiteSpace(x));
+            var sut = new PredictateRule<string>(x => !string.IsNullOrWhiteSpace(x));
 
             // assert
-            Assert.AreEqual(false, sut.Execute(reference1).IsSuccess);
-            Assert.AreEqual(false, sut.Execute(reference2).IsSuccess);
-            Assert.AreEqual(false, sut.Execute(reference3).IsSuccess);
+            Assert.AreEqual(false, sut.Execute(reference1.String).IsSuccess);
+            Assert.AreEqual(false, sut.Execute(reference2.String).IsSuccess);
+            Assert.AreEqual(false, sut.Execute(reference3.String).IsSuccess);
         }
     }
 }

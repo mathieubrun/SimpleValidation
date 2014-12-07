@@ -3,22 +3,19 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public class ComparisonBasedRule<TTarget, TProperty> : ExpressionBasedRule<TTarget, TProperty> where TProperty : IComparable, IComparable<TProperty>
+    public class CompareRule<TProperty> : IRule<TProperty> where TProperty : IComparable, IComparable<TProperty>
     {
         private readonly Comparisons comparison;
         private readonly TProperty reference;
 
-        public ComparisonBasedRule(Expression<Func<TTarget, TProperty>> getProperty, Comparisons comparison, TProperty reference)
-            : base(getProperty)
+        public CompareRule(Comparisons comparison, TProperty reference)
         {
             this.comparison = comparison;
             this.reference = reference;
         }
 
-        public override ValidationResult Execute(TTarget target)
+        public ValidationResult Execute(TProperty result)
         {
-            var result = GetValue(target);
-
             if (reference == null)
             {
                 return GetResult(false);

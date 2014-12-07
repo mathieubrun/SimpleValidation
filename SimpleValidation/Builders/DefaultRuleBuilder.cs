@@ -21,7 +21,7 @@ namespace SimpleValidation.Builders
 
         public IDefaultRuleBuilder<TTarget> NotDefault()
         {
-            this.Add(new MandatoryRule<TTarget, TProperty>(propertySelector));
+            this.Add(new RuleApplier<TTarget, TProperty>(propertySelector, new MandatoryRule<TProperty>()));
 
             return this;
         }

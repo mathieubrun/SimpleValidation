@@ -57,12 +57,12 @@
   <ItemGroup>
     <Compile Include="ApiTests.cs" />
     <Compile Include="TestValidationEngine.cs" />
-    <Compile Include="Rules\PredicateBasedRuleTests.cs">
+    <Compile Include="Rules\PredicateRuleTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="TestObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Rules\ComparisonBasedRuleTests.cs">
+    <Compile Include="Rules\CompareRuleTests.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Rules\MandatoryRuleTests.cs">
