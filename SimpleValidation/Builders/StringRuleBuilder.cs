@@ -31,28 +31,28 @@ namespace SimpleValidation.Builders
         {
             var regexp = new System.Text.RegularExpressions.Regex(pattern);
 
-            this.Add(new PredictateBasedRule<TTarget, string>(propertySelector, x => regexp.IsMatch(x)));
+            this.Add(new RuleApplier<TTarget, string>(propertySelector, new PredictateRule<string>(x => regexp.IsMatch(x))));
 
             return this;
         }
 
         public IStringRuleBuilder<TTarget> NotWhitespace()
         {
-            this.Add(new PredictateBasedRule<TTarget, string>(propertySelector, x => !string.IsNullOrWhiteSpace(x)));
+            this.Add(new RuleApplier<TTarget, string>(propertySelector, new PredictateRule<string>(x => !string.IsNullOrWhiteSpace(x))));
 
             return this;
         }
 
         public IStringRuleBuilder<TTarget> NotEmpty()
         {
-            this.Add(new ComparisonBasedRule<TTarget, string>(propertySelector, Comparisons.Different, ""));
+            this.Add(new RuleApplier<TTarget, string>(propertySelector, new CompareRule<string>(Comparisons.Different, "")));
 
             return this;
         }
 
         public IStringRuleBuilder<TTarget> NotDefault()
         {
-            this.Add(new PredictateBasedRule<TTarget, string>(propertySelector, x => x != null));
+            this.Add(new RuleApplier<TTarget, string>(propertySelector, new PredictateRule<string>(x => x != null)));
 
             return this;
         }

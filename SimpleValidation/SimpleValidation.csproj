@@ -70,16 +70,15 @@
     <Compile Include="Rules\Comparisons.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Rules\ComparisonBasedRule.cs" />
+    <Compile Include="Rules\CompareRule.cs" />
     <Compile Include="Rules\ExpressionBasedRule.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Rules\MandatoryRule.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Rules\PredictateBasedRule.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Rules\PredictateRule.cs" />
+    <Compile Include="Rules\RuleApplier.cs" />
     <Compile Include="ValidationEngineBase.cs" />
     <Compile Include="ValidationResult.cs">
       <SubType>Code</SubType>
