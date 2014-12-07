@@ -1,12 +1,7 @@
 ﻿namespace SimpleValidation
 {
-    public interface ITargetedRule<TTarget>
+    public interface IRule<TProp>
     {
-        ValidationResult Execute(TTarget target);
-    }
-
-    public interface IRule
-    {
-        ValidationResult Execute();
+        ValidationResult Execute(TProp target);
     }
 }

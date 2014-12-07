@@ -24,7 +24,7 @@ namespace SimpleValidation.Tests
                 }
             };
 
-            var rules = new List<ITargetedRule<TestObject>>();
+            var rules = new List<IRule<TestObject>>();
 
             var sut = new ValidatorBuilder<TestObject>(rules)
                 .RuleFor(x => x.String)

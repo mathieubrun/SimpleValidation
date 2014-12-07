@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public abstract class ExpressionBasedRule<TTarget, TProperty> : ITargetedRule<TTarget>
+    public abstract class ExpressionBasedRule<TTarget, TProperty> : IRule<TTarget>
     {
         private readonly Func<TTarget, TProperty> selector;
 
