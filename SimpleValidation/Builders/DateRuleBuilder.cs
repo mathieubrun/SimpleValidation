@@ -13,7 +13,7 @@ namespace SimpleValidation.Builders
     {
         private readonly Expression<Func<TTarget, DateTime>> propertySelector;
 
-        public DateRuleBuilder(IList<ITargetedRule<TTarget>> rules, Expression<Func<TTarget, DateTime>> propertySelector)
+        public DateRuleBuilder(IList<IRule<TTarget>> rules, Expression<Func<TTarget, DateTime>> propertySelector)
             : base(rules)
         {
             this.propertySelector = propertySelector;

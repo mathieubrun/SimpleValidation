@@ -13,7 +13,7 @@ namespace SimpleValidation.Builders
     {
         private readonly Expression<Func<TTarget, string>> propertySelector;
 
-        public StringRuleBuilder(IList<ITargetedRule<TTarget>> rules, Expression<Func<TTarget, string>> propertySelector)
+        public StringRuleBuilder(IList<IRule<TTarget>> rules, Expression<Func<TTarget, string>> propertySelector)
             : base(rules)
         {
             this.propertySelector = propertySelector;

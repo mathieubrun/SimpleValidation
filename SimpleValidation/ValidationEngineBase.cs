@@ -10,7 +10,7 @@ namespace SimpleValidation
 {
     public abstract class ValidationEngineBase<T> : IValidatorBuilder<T>
     {
-        private readonly IList<ITargetedRule<T>> rules = new List<ITargetedRule<T>>();
+        private readonly IList<IRule<T>> rules = new List<IRule<T>>();
 
         protected ValidationEngineBase()
         {
