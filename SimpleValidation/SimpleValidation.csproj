@@ -71,9 +71,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Rules\CompareRule.cs" />
-    <Compile Include="Rules\ExpressionBasedRule.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Rules\MandatoryRule.cs">
       <SubType>Code</SubType>
     </Compile>
