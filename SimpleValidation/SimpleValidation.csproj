@@ -74,7 +74,7 @@
     <Compile Include="Rules\MandatoryRule.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Rules\PredictateRule.cs" />
+    <Compile Include="Rules\PredicateRule.cs" />
     <Compile Include="Rules\RuleApplier.cs" />
     <Compile Include="ValidationEngineBase.cs" />
     <Compile Include="ValidationResult.cs">

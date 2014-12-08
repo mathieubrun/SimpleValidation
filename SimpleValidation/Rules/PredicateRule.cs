@@ -3,11 +3,11 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public class PredictateRule<TProperty> : IRule<TProperty> where TProperty : IComparable, IComparable<TProperty>
+    public class PredicateRule<TProperty> : IRule<TProperty> where TProperty : IComparable, IComparable<TProperty>
     {
         private readonly Predicate<TProperty> predicate;
 
-        public PredictateRule(Predicate<TProperty> predicate)
+        public PredicateRule(Predicate<TProperty> predicate)
         {
             this.predicate = predicate;
         }
