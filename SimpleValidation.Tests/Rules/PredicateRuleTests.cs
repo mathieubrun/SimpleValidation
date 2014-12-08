@@ -16,7 +16,7 @@ namespace SimpleValidation.Tests.Rules
             var reference2 = new TestObject() { String = " " };
             var reference3 = new TestObject() { String = null };
 
-            var sut = new PredictateRule<string>(x => !string.IsNullOrWhiteSpace(x));
+            var sut = new PredicateRule<string>(x => !string.IsNullOrWhiteSpace(x));
 
             // assert
             Assert.AreEqual(false, sut.Execute(reference1.String).IsSuccess);
