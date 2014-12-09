@@ -21,21 +21,21 @@ namespace SimpleValidation.Builders
 
         public IDateRuleBuilder<TTarget> LessThanToday()
         {
-            this.Add(new RuleApplier<TTarget, DateTime>(propertySelector, new CompareRule<DateTime>(Comparisons.LessThan, DateTime.Now)));
+            this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.LessThan, DateTime.Now));
 
             return this;
         }
 
         public IDateRuleBuilder<TTarget> GreaterThanToday()
         {
-            this.Add(new RuleApplier<TTarget, DateTime>(propertySelector, new CompareRule<DateTime>(Comparisons.GreaterThan, DateTime.Now)));
+            this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.GreaterThan, DateTime.Now));
 
             return this;
         }
 
         public IDateRuleBuilder<TTarget> NotDefault()
         {
-            this.Add(new RuleApplier<TTarget, DateTime>(propertySelector, new CompareRule<DateTime>(Comparisons.Different, default(DateTime))));
+            this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.Different, default(DateTime)));
 
             return this;
         }
