@@ -39,6 +39,7 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
     <None Include="packages.config" />
+    <None Include="SimpleValidation.nuspec" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Builders\DateRuleBuilder.cs" />
