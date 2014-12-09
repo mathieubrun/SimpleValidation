@@ -4,6 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleValidation.Rules;
 
 namespace SimpleValidation.Builders
 {
@@ -56,9 +57,9 @@ namespace SimpleValidation.Builders
             throw new NotImplementedException();
         }
 
-        protected void Add(IRule<TTarget> rule)
+        protected void Add<TProperty>(Expression<Func<TTarget, TProperty>> propertySelector, IRule<TProperty> rule)
         {
-            this.rules.Add(rule);
+            this.rules.Add(new RuleApplier<TTarget, TProperty>(propertySelector, rule));
         }
     }
 }
