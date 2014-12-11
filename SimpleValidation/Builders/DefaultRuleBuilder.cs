@@ -13,7 +13,7 @@ namespace SimpleValidation.Builders
     {
         private readonly Expression<Func<TTarget, TProperty>> propertySelector;
 
-        public DefaultRuleBuilder(IList<ITargetedRule<TTarget>> rules, Expression<Func<TTarget, TProperty>> propertySelector)
+        public DefaultRuleBuilder(IList<IRule<TTarget>> rules, Expression<Func<TTarget, TProperty>> propertySelector)
             : base(rules)
         {
             this.propertySelector = propertySelector;
@@ -21,7 +21,7 @@ namespace SimpleValidation.Builders
 
         public IDefaultRuleBuilder<TTarget> NotDefault()
         {
-            this.Add(new MandatoryRule<TTarget, TProperty>(propertySelector));
+            this.Add(propertySelector, new MandatoryRule<TProperty>());
 
             return this;
         }

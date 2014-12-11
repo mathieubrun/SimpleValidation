@@ -16,7 +16,7 @@ namespace SimpleValidation.Tests
             // arrange
             var success = new TestObject()
             {
-                String = "Test",
+                String = "test@example.com",
                 Date = DateTime.Now.AddDays(-1),
                 Parent = new TestObject()
                 {
@@ -24,12 +24,13 @@ namespace SimpleValidation.Tests
                 }
             };
 
-            var rules = new List<ITargetedRule<TestObject>>();
+            var rules = new List<IRule<TestObject>>();
 
             var sut = new ValidatorBuilder<TestObject>(rules)
                 .RuleFor(x => x.String)
                     .NotDefault()
                     .NotWhitespace()
+                    .Email()
                 .RuleFor(x => x.Date)
                     .NotDefault()
                     .LessThanToday()
@@ -40,6 +41,29 @@ namespace SimpleValidation.Tests
 
             // act
             var successResults = rules.Select(x => x.Execute(success));
+
+            // assert
+            Assert.IsTrue(successResults.All(x => x.IsSuccess));
+        }
+
+        [TestMethod]
+        public void ValidationEngine_implementation_test()
+        {
+            // arrange
+            var success = new TestObject()
+            {
+                String = "Test",
+                Date = DateTime.Now.AddDays(-1),
+                Parent = new TestObject()
+                {
+                    Date = DateTime.Now.AddDays(1)
+                }
+            };
+
+            var sut = new TestValidationEngine();
+
+            // act
+            var successResults = sut.Validate(success);
 
             // assert
             Assert.IsTrue(successResults.All(x => x.IsSuccess));

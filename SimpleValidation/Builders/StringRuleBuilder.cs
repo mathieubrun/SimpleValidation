@@ -13,7 +13,7 @@ namespace SimpleValidation.Builders
     {
         private readonly Expression<Func<TTarget, string>> propertySelector;
 
-        public StringRuleBuilder(IList<ITargetedRule<TTarget>> rules, Expression<Func<TTarget, string>> propertySelector)
+        public StringRuleBuilder(IList<IRule<TTarget>> rules, Expression<Func<TTarget, string>> propertySelector)
             : base(rules)
         {
             this.propertySelector = propertySelector;
@@ -21,24 +21,38 @@ namespace SimpleValidation.Builders
 
         public IStringRuleBuilder<TTarget> Email()
         {
-            throw new NotImplementedException();
+            // from http://haacked.com/archive/2007/08/21/i-knew-how-to-validate-an-email-address-until-i.aspx/
+            return Regex(@"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+                + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+                + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$");
+        }
+
+        public IStringRuleBuilder<TTarget> Regex(string pattern)
+        {
+            var regexp = new System.Text.RegularExpressions.Regex(pattern);
+
+            this.Add(propertySelector, new PredicateRule<string>(x => regexp.IsMatch(x)));
+
+            return this;
         }
 
         public IStringRuleBuilder<TTarget> NotWhitespace()
         {
-            this.Add(new ComparisonBasedRule<TTarget, string>(propertySelector, Comparisons.Different, ""));
+            this.Add(propertySelector, new PredicateRule<string>(x => !string.IsNullOrWhiteSpace(x)));
 
             return this;
         }
 
         public IStringRuleBuilder<TTarget> NotEmpty()
         {
-            throw new NotImplementedException();
+            this.Add(propertySelector, new CompareRule<string>(Comparisons.Different, ""));
+
+            return this;
         }
 
         public IStringRuleBuilder<TTarget> NotDefault()
         {
-            this.Add(new PredictateBasedRule<TTarget, string>(propertySelector, x => x != null));
+            this.Add(propertySelector, new PredicateRule<string>(x => x != null));
 
             return this;
         }

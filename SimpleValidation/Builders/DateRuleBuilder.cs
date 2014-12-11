@@ -13,7 +13,7 @@ namespace SimpleValidation.Builders
     {
         private readonly Expression<Func<TTarget, DateTime>> propertySelector;
 
-        public DateRuleBuilder(IList<ITargetedRule<TTarget>> rules, Expression<Func<TTarget, DateTime>> propertySelector)
+        public DateRuleBuilder(IList<IRule<TTarget>> rules, Expression<Func<TTarget, DateTime>> propertySelector)
             : base(rules)
         {
             this.propertySelector = propertySelector;
@@ -21,21 +21,21 @@ namespace SimpleValidation.Builders
 
         public IDateRuleBuilder<TTarget> LessThanToday()
         {
-            this.Add(new ComparisonBasedRule<TTarget, DateTime>(propertySelector, Comparisons.LessThan, DateTime.Now));
+            this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.LessThan, DateTime.Now));
 
             return this;
         }
 
         public IDateRuleBuilder<TTarget> GreaterThanToday()
         {
-            this.Add(new ComparisonBasedRule<TTarget, DateTime>(propertySelector, Comparisons.GreaterThan, DateTime.Now));
+            this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.GreaterThan, DateTime.Now));
 
             return this;
         }
 
         public IDateRuleBuilder<TTarget> NotDefault()
         {
-            this.Add(new ComparisonBasedRule<TTarget, DateTime>(propertySelector, Comparisons.Different, default(DateTime)));
+            this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.Different, default(DateTime)));
 
             return this;
         }

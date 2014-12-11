@@ -4,14 +4,15 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using SimpleValidation.Rules;
 
 namespace SimpleValidation.Builders
 {
     public class ValidatorBuilder<TTarget> : IValidatorBuilder<TTarget>
     {
-        private readonly IList<ITargetedRule<TTarget>> rules;
+        private readonly IList<IRule<TTarget>> rules;
 
-        public ValidatorBuilder(IList<ITargetedRule<TTarget>> rules)
+        public ValidatorBuilder(IList<IRule<TTarget>> rules)
         {
             this.rules = rules;
         }
@@ -56,9 +57,9 @@ namespace SimpleValidation.Builders
             throw new NotImplementedException();
         }
 
-        protected void Add(ITargetedRule<TTarget> rule)
+        protected void Add<TProperty>(Expression<Func<TTarget, TProperty>> propertySelector, IRule<TProperty> rule)
         {
-            this.rules.Add(rule);
+            this.rules.Add(new RuleApplier<TTarget, TProperty>(propertySelector, rule));
         }
     }
 }

@@ -3,18 +3,11 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public class MandatoryRule<TTarget, TProperty> : ExpressionBasedRule<TTarget, TProperty>
+    public class MandatoryRule<TProperty> : IRule<TProperty>
     {
-        public MandatoryRule(Expression<Func<TTarget, TProperty>> getProperty)
-            : base(getProperty)
+        public ValidationResult Execute(TProperty value)
         {
-        }
-
-        public override ValidationResult Execute(TTarget target)
-        {
-            var result = GetValue(target);
-
-            if (!object.Equals(default(TProperty), result))
+            if (!object.Equals(default(TProperty), value))
             {
                 return ValidationResult.Success();
             }
