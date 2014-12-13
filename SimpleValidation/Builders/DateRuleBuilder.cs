@@ -40,12 +40,4 @@ namespace SimpleValidation.Builders
             return this;
         }
     }
-
-    public class DefaultRules<TReturn> : IDefaultRules<TReturn>
-    {
-        public TReturn NotDefault()
-        {
-            throw new NotImplementedException();
-        }
-    }
 }
