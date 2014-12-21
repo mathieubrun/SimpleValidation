@@ -6,18 +6,12 @@ using System.Threading.Tasks;
 
 namespace SimpleValidation.Builders
 {
-    public interface IDefaultRuleBuilder<TTarget> :
-        IDefaultRules<IDefaultRuleBuilder<TTarget>>,
-        IValidatorBuilder<TTarget>
+    public interface IDefaultRuleBuilder<TTarget> : IDefaultRules<IDefaultRuleBuilder<TTarget>>, IValidatorBuilder<TTarget>
     {
     }
 
     public interface IDefaultRules<TReturn>
     {
         TReturn NotDefault();
-    }
-
-    public interface IDefaultRules : IDefaultRules<IDefaultRules>
-    {
     }
 }

@@ -8,8 +8,7 @@ using SimpleValidation.Rules;
 
 namespace SimpleValidation.Builders
 {
-    public class DefaultRuleBuilder<TTarget, TProperty> : ValidatorBuilder<TTarget>,
-        IDefaultRuleBuilder<TTarget>
+    public class DefaultRuleBuilder<TTarget, TProperty> : ValidatorBuilder<TTarget>, IDefaultRuleBuilder<TTarget>
     {
         private readonly Expression<Func<TTarget, TProperty>> propertySelector;
 

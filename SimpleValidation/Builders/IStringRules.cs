@@ -1,8 +1,6 @@
 ﻿namespace SimpleValidation.Builders
 {
-    public interface IStringRuleBuilder<TTarget> :
-        IStringRules<IStringRuleBuilder<TTarget>>,
-        IValidatorBuilder<TTarget>
+    public interface IStringRuleBuilder<TTarget> : IStringRules<IStringRuleBuilder<TTarget>>, IValidatorBuilder<TTarget>
     {
     }
 
@@ -15,9 +13,5 @@
         TReturn NotWhitespace();
 
         TReturn NotEmpty();
-    }
-
-    public interface IStringRules : IStringRules<IStringRules>
-    {
     }
 }

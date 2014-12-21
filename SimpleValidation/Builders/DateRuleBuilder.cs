@@ -8,8 +8,7 @@ using SimpleValidation.Rules;
 
 namespace SimpleValidation.Builders
 {
-    public class DateRuleBuilder<TTarget> : ValidatorBuilder<TTarget>,
-        IDateRuleBuilder<TTarget>
+    public class DateRuleBuilder<TTarget> : ValidatorBuilder<TTarget>, IDateRuleBuilder<TTarget>
     {
         private readonly Expression<Func<TTarget, DateTime>> propertySelector;
 

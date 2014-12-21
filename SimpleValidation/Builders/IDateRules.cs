@@ -1,8 +1,6 @@
 ﻿namespace SimpleValidation.Builders
 {
-    public interface IDateRuleBuilder<TTarget> :
-        IDateRules<IDateRuleBuilder<TTarget>>,
-        IValidatorBuilder<TTarget>
+    public interface IDateRuleBuilder<TTarget> : IDateRules<IDateRuleBuilder<TTarget>>, IValidatorBuilder<TTarget>
     {
     }
 
@@ -11,9 +9,5 @@
         TReturn LessThanToday();
 
         TReturn GreaterThanToday();
-    }
-
-    public interface IDateRules : IDateRules<IDateRules>
-    {
     }
 }

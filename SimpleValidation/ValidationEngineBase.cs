@@ -40,25 +40,5 @@ namespace SimpleValidation
         {
             return new DefaultRuleBuilder<T, TProperty>(rules, propertySelector);
         }
-
-        public ICompositeRuleBuilder<T, IDateRules> RulesFor(Expression<Func<T, DateTime?>> propertySelector)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICompositeRuleBuilder<T, IDateRules> RulesFor(Expression<Func<T, DateTime>> propertySelector)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICompositeRuleBuilder<T, IStringRules> RulesFor(Expression<Func<T, string>> propertySelector)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ICompositeRuleBuilder<T, IDefaultRules> RulesFor<TProperty>(Expression<Func<T, TProperty>> propertySelector)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

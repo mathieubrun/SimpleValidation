@@ -7,14 +7,15 @@ namespace SimpleValidation.Tests
         public TestValidationEngine()
         {
             RuleFor(x => x.String)
-                    .NotDefault()
-                    .NotWhitespace();
+                .NotDefault()
+                .NotWhitespace();
 
             RuleFor(x => x.Date)
                 .NotDefault()
                 .LessThanToday();
 
-            RuleFor(x => x.Parent).NotDefault()
+            RuleFor(x => x.Parent)
+                .NotDefault()
                 .RuleFor(x => x.Parent.Date)
                     .NotDefault()
                     .GreaterThanToday();

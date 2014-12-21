@@ -18,6 +18,7 @@ namespace SimpleValidation.Tests
             {
                 String = "test@example.com",
                 Date = DateTime.Now.AddDays(-1),
+                NullDate = DateTime.Now.AddDays(-1),
                 Parent = new TestObject()
                 {
                     Date = DateTime.Now.AddDays(1)
@@ -34,7 +35,8 @@ namespace SimpleValidation.Tests
                 .RuleFor(x => x.Date)
                     .NotDefault()
                     .LessThanToday()
-                .RuleFor(x => x.Parent).NotDefault()
+                .RuleFor(x => x.Parent)
+                    .NotDefault()
                     .RuleFor(x => x.Parent.Date)
                         .NotDefault()
                         .GreaterThanToday();
