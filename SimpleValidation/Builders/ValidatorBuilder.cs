@@ -19,7 +19,7 @@ namespace SimpleValidation.Builders
 
         public IDateRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, DateTime?>> propertySelector)
         {
-            throw new NotImplementedException();
+            return new DateRuleBuilder<TTarget>(rules, propertySelector);
         }
 
         public IDateRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, DateTime>> propertySelector)

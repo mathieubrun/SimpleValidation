@@ -18,6 +18,13 @@ namespace SimpleValidation.Builders
             this.propertySelector = propertySelector;
         }
 
+        public DateRuleBuilder(IList<IRule<TTarget>> rules, Expression<Func<TTarget, DateTime?>> propertySelector)
+            : base(rules)
+        {
+            var prop = propertySelector.Compile();
+            this.propertySelector = x => prop(x).GetValueOrDefault();
+        }
+
         public IDateRuleBuilder<TTarget> LessThanToday()
         {
             this.Add(propertySelector, new CompareRule<DateTime>(Comparisons.LessThan, DateTime.Now));
