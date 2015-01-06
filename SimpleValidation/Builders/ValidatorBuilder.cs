@@ -17,6 +17,14 @@ namespace SimpleValidation.Builders
             this.rules = rules;
         }
 
+        protected IEnumerable<IRule<TTarget>> Rules
+        {
+            get
+            {
+                return rules;
+            }
+        }
+
         public IDateRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, DateTime?>> propertySelector)
         {
             return new DateRuleBuilder<TTarget>(rules, propertySelector);
