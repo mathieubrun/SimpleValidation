@@ -3,8 +3,17 @@ using SimpleValidation.Rules;
 
 namespace SimpleValidation
 {
-    public interface IValidationEngine<T>
+    /// <summary>
+    /// Validation engine interface
+    /// </summary>
+    /// <typeparam name="TTarget">Type to be validated</typeparam>
+    public interface IValidationEngine<TTarget>
     {
-        IEnumerable<ValidationResult> Validate(T target);
+        /// <summary>
+        /// Executes a set of rules
+        /// </summary>
+        /// <param name="target">Validation target</param>
+        /// <returns>Enumeration of Validation results</returns>
+        IEnumerable<ValidationResult> Validate(TTarget target);
     }
 }
