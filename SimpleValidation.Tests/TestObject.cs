@@ -4,6 +4,8 @@ namespace SimpleValidation.Tests
 {
     public class TestObject
     {
+        public int Int { get; set; }
+
         public DateTime Date { get; set; }
 
         public DateTime? NullDate { get; set; }

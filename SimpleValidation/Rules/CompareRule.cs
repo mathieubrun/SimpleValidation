@@ -3,25 +3,25 @@ using System.Linq.Expressions;
 
 namespace SimpleValidation.Rules
 {
-    public class CompareRule<TProperty> : IRule<TProperty> where TProperty : IComparable, IComparable<TProperty>
+    public class CompareRule<TProp> : IRule<TProp> where TProp : IComparable<TProp>
     {
         private readonly Comparisons comparison;
-        private readonly TProperty reference;
+        private readonly IComparable<TProp> reference;
 
-        public CompareRule(Comparisons comparison, TProperty reference)
+        public CompareRule(Comparisons comparison, IComparable<TProp> reference)
         {
             this.comparison = comparison;
             this.reference = reference;
         }
 
-        public ValidationResult Execute(TProperty result)
+        public ValidationResult Execute(TProp result)
         {
             if (reference == null)
             {
                 return GetResult(false);
             }
 
-            var comp = reference.CompareTo(result);
+            var comp = reference.CompareTo((TProp)result);
 
             switch (comparison)
             {

@@ -25,6 +25,11 @@ namespace SimpleValidation.Builders
             }
         }
 
+        public IIComparableRuleBuilder<TTarget, int> RuleFor(Expression<Func<TTarget, int>> propertySelector) 
+        {
+            return new IComparableRuleBuilder<TTarget, int>(rules, propertySelector);
+        }
+
         public IDateRuleBuilder<TTarget> RuleFor(Expression<Func<TTarget, DateTime?>> propertySelector)
         {
             return new DateRuleBuilder<TTarget>(rules, propertySelector);

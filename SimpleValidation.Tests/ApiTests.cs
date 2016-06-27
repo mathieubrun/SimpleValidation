@@ -16,6 +16,7 @@ namespace SimpleValidation.Tests
             // arrange
             var success = new TestObject()
             {
+                Int = 10,
                 String = "test@example.com",
                 Date = DateTime.Now.AddDays(-1),
                 NullDate = DateTime.Now.AddDays(-1),
@@ -28,6 +29,9 @@ namespace SimpleValidation.Tests
             var rules = new List<IRule<TestObject>>();
 
             var sut = new ValidatorBuilder<TestObject>(rules)
+                .RuleFor(x => x.Int)
+                    .NotDefault()
+                    .Between(0, 10)
                 .RuleFor(x => x.String)
                     .NotDefault()
                     .NotWhitespace()

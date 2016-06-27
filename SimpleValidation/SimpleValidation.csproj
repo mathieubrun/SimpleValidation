@@ -44,6 +44,8 @@
     <None Include="SimpleValidation.nuspec" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\IComparableRuleBuilder.cs" />
+    <Compile Include="Builders\IIComparableRules.cs" />
     <Compile Include="Builders\DateRuleBuilder.cs" />
     <Compile Include="Builders\DefaultRuleBuilder.cs">
       <SubType>Code</SubType>

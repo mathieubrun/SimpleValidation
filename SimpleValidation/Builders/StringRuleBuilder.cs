@@ -44,7 +44,7 @@ namespace SimpleValidation.Builders
 
         public IStringRuleBuilder<TTarget> NotEmpty()
         {
-            this.Add(propertySelector, new CompareRule<string>(Comparisons.Different, ""));
+            this.Add<string>(propertySelector, new CompareRule<string>(Comparisons.Different, ""));
 
             return this;
         }
